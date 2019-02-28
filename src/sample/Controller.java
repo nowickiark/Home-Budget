@@ -20,11 +20,19 @@ public class Controller {
 
 
     @FXML private Label textLabel;
+
+    //Zmienne do pobierania danych z pól tekstowych
     @FXML private TextField asortText;
+    @FXML private ComboBox<String> listaKategorii;
     @FXML private TextField cenaText;
+    @FXML private TextField ktoText;
     @FXML private DatePicker kiedyText;
     @FXML private DatePicker kiedyText2;
+
+
+    //Zmienne do obsługi tabeli
     @FXML private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+    @FXML private DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyy/MM/dd");
     @FXML public TableView<Zakup> tablicaOkno;
     @FXML private TableColumn<Zakup,String>  nazwaKolumna;
     @FXML private TableColumn<Zakup,String>  kategoriaKolumna;
@@ -38,7 +46,34 @@ public class Controller {
 
         @FXML
         public void dodajzakup(ActionEvent e) {
-        lista.add(new Zakup(asortText.getText(), Double.valueOf(cenaText.getText()), LocalDate.parse(String.valueOf(kiedyText.getValue()),formatter) ));
+
+        /*lista.add(new Zakup(asortText.getText(), Double.valueOf(cenaText.getText()), LocalDate.parse(String.valueOf(kiedyText.getValue()),formatter) ));*/
+
+/*           Lista pól w tabeli:
+            1.)Nazwa
+            2.)Kategoria
+            3.)Cena
+            4.)Kiedy
+            5.)Kto   */
+
+            Zakup nowyZakup = new Zakup(asortText.getText(),
+                                  listaKategorii.getSelectionModel().getSelectedItem(),
+                                  Double.valueOf(cenaText.getText()),
+                                  kiedyText.getValue(),
+                                  ktoText.getText()
+                                    );
+
+/*            Zakup nowyZakup = new Zakup(asortText.getText(),
+                    listaKategorii.getAccessibleText(),
+                    Double.valueOf(cenaText.getText()),
+                    LocalDate.parse(String.valueOf(kiedyText.getValue()),formatter2),
+                    ktoText.getText()
+            );*/
+
+            System.out.format(nowyZakup.getKategoria() + " " + nowyZakup.getNazwa()+ " " + nowyZakup.getCena() + " " + nowyZakup.getData());
+
+
+            tablicaOkno.getItems().add(nowyZakup);
 
         }
 
@@ -67,6 +102,12 @@ public class Controller {
     public void initialize() {
         textLabel.setText("");
 
+            listaKategorii.getItems().addAll("Spożywcze",
+                                                        "Chemia",
+                                                        "Higiena",
+                                                        "Rozrywka",
+                                                        "Inne");
+
         //ustawia kolumny w tabeli
 
         nazwaKolumna.setCellValueFactory(new PropertyValueFactory<Zakup,String>("Nazwa"));
@@ -79,15 +120,18 @@ public class Controller {
 
         }
 
+        //Funkcja do przycisku zapisz koszty ogólne
+
+
         @FXML
         public ObservableList<Zakup> getZakupy()
         {
 
             ObservableList<Zakup> zakupy = FXCollections.observableArrayList();
-            zakupy.add(new Zakup("Laptop",1999.99,LocalDate.parse("13/02/19",formatter),"Trwałe","Arek"));
-            zakupy.add(new Zakup("Lidl",123.76,LocalDate.parse("12/02/19",formatter),"Spozywcze","Drek"));
-            zakupy.add(new Zakup("Paliwo",200.12,LocalDate.parse("13/02/19",formatter),"Saochod","Frek"));
-            zakupy.add(new Zakup("Apteka",12.99,LocalDate.parse("11/01/19",formatter),"Higiena i leki","Jrek"));
+            zakupy.add(new Zakup("Laptop","Trwałe",1999.99,LocalDate.parse("13/02/19",formatter),"Arek"));
+            zakupy.add(new Zakup("Lidl","Spozywcze",123.76,LocalDate.parse("12/02/19",formatter),"Drek"));
+            zakupy.add(new Zakup("Paliwo","Saochod",200.12,LocalDate.parse("13/02/19",formatter),"Frek"));
+            zakupy.add(new Zakup("Apteka","Higiena i leki",12.99,LocalDate.parse("11/01/19",formatter),"Jrek"));
 
             return zakupy;
         }

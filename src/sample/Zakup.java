@@ -25,7 +25,7 @@ public class Zakup {
         this.cena = (cena);
     }
 
-    public Zakup(String nazwa, Double cena, LocalDate data, String kategoria, String osoba) {
+    public Zakup(String nazwa,String kategoria, Double cena, LocalDate data, String osoba) {
         this(nazwa,cena,data);
         this.kategoria = new SimpleStringProperty(kategoria);
         this.osoba = new SimpleStringProperty(osoba);
