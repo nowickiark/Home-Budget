@@ -160,14 +160,14 @@
             </TitledPane>
         </panes>
       </Accordion>
-      <VBox layoutX="531.0" layoutY="26.0" prefHeight="127.0" prefWidth="99.0">
+      <VBox layoutX="531.0" layoutY="26.0" prefHeight="126.0" prefWidth="155.0">
          <children>
             <Button mnemonicParsing="false" onAction="#pokazzakupy" prefHeight="29.0" prefWidth="97.0" text="Lista">
                <font>
                   <Font name="Microsoft New Tai Lue Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#zapisz" prefHeight="56.0" prefWidth="260.0" text="Zapisz do pliku">
+            <Button fx:id="zapiszButton" mnemonicParsing="false" onAction="#zapiszDoPliku" prefHeight="56.0" prefWidth="140.0" text="Zapisz do pliku">
                <font>
                   <Font name="Microsoft New Tai Lue Bold" size="20.0" />
                </font>

@@ -11,7 +11,7 @@ public class Zakup {
     private Double cena;
     private LocalDate data;
 
-
+    public Zakup(){};
 
     public Zakup(String nazwa, Double cena, LocalDate data) {
         this.nazwa = new SimpleStringProperty(nazwa);

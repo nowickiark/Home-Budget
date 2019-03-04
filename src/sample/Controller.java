@@ -47,8 +47,6 @@ public class Controller {
         @FXML
         public void dodajzakup(ActionEvent e) {
 
-        /*lista.add(new Zakup(asortText.getText(), Double.valueOf(cenaText.getText()), LocalDate.parse(String.valueOf(kiedyText.getValue()),formatter) ));*/
-
 /*           Lista pól w tabeli:
             1.)Nazwa
             2.)Kategoria
@@ -63,17 +61,18 @@ public class Controller {
                                   ktoText.getText()
                                     );
 
-/*            Zakup nowyZakup = new Zakup(asortText.getText(),
-                    listaKategorii.getAccessibleText(),
-                    Double.valueOf(cenaText.getText()),
-                    LocalDate.parse(String.valueOf(kiedyText.getValue()),formatter2),
-                    ktoText.getText()
-            );*/
 
             System.out.format(nowyZakup.getKategoria() + " " + nowyZakup.getNazwa()+ " " + nowyZakup.getCena() + " " + nowyZakup.getData());
 
-
             tablicaOkno.getItems().add(nowyZakup);
+
+        }
+
+        @FXML
+        public void zapiszDoPliku(ActionEvent a)
+        {
+            ZapiszDoPlikuClass zas = new ZapiszDoPlikuClass(tablicaOkno);
+            zas.pokazTablice();
 
         }
 
