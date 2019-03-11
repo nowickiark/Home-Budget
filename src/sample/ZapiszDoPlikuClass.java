@@ -32,10 +32,6 @@ public class ZapiszDoPlikuClass {
             tempTable.add(tablicaOknoClass.getItems().get(i));
         }
 
-/*        for (Zakup tempZa : tempTable)
-        {
-            System.out.println(tempZa.toString());
-        }*/
 
         //Tworzy obiekny json z uwzględnieniem wartości pustych w obiektach
         Gson gson = new GsonBuilder().serializeNulls().create();
@@ -52,7 +48,7 @@ public class ZapiszDoPlikuClass {
         Type zakupyTypeList = new TypeToken<ArrayList<Zakup>>(){}.getType();
         temTable2 = gson.fromJson(Serialized, zakupyTypeList);
 
-        System.out.println(temTable2.get(1).getNazwa());
+        /*System.out.println(temTable2.get(1).getNazwa());*/
 
 
         try (FileWriter file = new FileWriter("newfile.json")) {

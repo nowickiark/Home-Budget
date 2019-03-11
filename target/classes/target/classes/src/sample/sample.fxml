@@ -19,11 +19,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1196.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.sample.Controller">
    <children>
-      <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="521.0" layoutY="188.0" prefHeight="97.0" prefWidth="155.0" text="Label">
+      <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="18.0" layoutY="242.0" prefHeight="25.0" prefWidth="160.0" text="Label">
          <font>
             <Font name="Nirmala UI" size="12.0" />
          </font></Label>
-      <Accordion layoutX="18.0" layoutY="14.0" prefHeight="278.0" prefWidth="483.0">
+      <Accordion layoutX="241.0" layoutY="14.0" prefHeight="278.0" prefWidth="483.0">
         <panes>
           <TitledPane text="Ogólne">
             <content>
@@ -148,33 +148,37 @@
                      </children></AnchorPane>
             </content>
           </TitledPane>
-          <TitledPane text="Tankowania">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </TitledPane>
             <TitledPane layoutX="10.0" layoutY="60.0" prefHeight="228.0" prefWidth="483.0" text="Rachunki">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </TitledPane>
+          <TitledPane text="Tankowania">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </TitledPane>
         </panes>
       </Accordion>
-      <VBox layoutX="531.0" layoutY="26.0" prefHeight="126.0" prefWidth="155.0">
+      <VBox layoutX="18.0" layoutY="14.0" prefHeight="214.0" prefWidth="204.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#pokazzakupy" prefHeight="29.0" prefWidth="97.0" text="Lista">
+            <Button mnemonicParsing="false" onAction="#pokazzakupy" prefHeight="59.0" prefWidth="204.0" text="Lista">
                <font>
                   <Font name="Microsoft New Tai Lue Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="zapiszButton" mnemonicParsing="false" onAction="#zapiszDoPliku" prefHeight="56.0" prefWidth="140.0" text="Zapisz do pliku">
+            <Button fx:id="zapiszButton" mnemonicParsing="false" onAction="#zapiszDoPliku" prefHeight="59.0" prefWidth="204.0" text="Zapisz do pliku">
+               <font>
+                  <Font name="Microsoft New Tai Lue Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="ReadFromFileButton" mnemonicParsing="false" onAction="#wczytajZpliku" prefHeight="59.0" prefWidth="204.0" text="Wczytaj z pliku">
                <font>
                   <Font name="Microsoft New Tai Lue Bold" size="20.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <PieChart layoutX="688.0" layoutY="14.0" prefHeight="278.0" prefWidth="500.0" />
       <TableView fx:id="tablicaOkno" layoutX="18.0" layoutY="309.0" prefHeight="269.0" prefWidth="1161.0">
         <columns>
           <TableColumn fx:id="nazwaKolumna" prefWidth="483.0" text="Nazwa" />
@@ -184,5 +188,6 @@
             <TableColumn fx:id="osobaKolumn" prefWidth="162.0" text="Osoba" />
         </columns>
       </TableView>
+      <PieChart fx:id="pieChart" layoutX="751.0" layoutY="14.0" prefHeight="278.0" prefWidth="420.0" title="Wydatki wg. kategorii" />
    </children>
 </AnchorPane>

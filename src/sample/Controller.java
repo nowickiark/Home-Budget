@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
@@ -28,6 +30,7 @@ public class Controller {
     @FXML private TextField ktoText;
     @FXML private DatePicker kiedyText;
     @FXML private DatePicker kiedyText2;
+    @FXML private PieChart pieChart;
 
 
     //Zmienne do obsługi tabeli
@@ -76,6 +79,13 @@ public class Controller {
 
         }
 
+        @FXML
+        public void wczytajZpliku(ActionEvent a) throws FileNotFoundException {
+
+            WczytajZPliku.wczytaj(tablicaOkno);
+
+        }
+
 
         @FXML
         public void pokazzakupy(ActionEvent a){
@@ -98,7 +108,7 @@ public class Controller {
         }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         textLabel.setText("");
 
             listaKategorii.getItems().addAll("Spożywcze",
@@ -115,7 +125,22 @@ public class Controller {
         dataKolumna.setCellValueFactory(new PropertyValueFactory<Zakup,LocalDate>("Data"));
         osobaKolumn.setCellValueFactory(new PropertyValueFactory<Zakup,String>("Osoba"));
 
-        tablicaOkno.setItems(getZakupy());
+
+
+        WczytajZPliku.wczytaj(tablicaOkno);
+        /*tablicaOkno.setItems(getZakupy());*/
+
+       ObservableList<PieChart.Data> pieChartData =
+               FXCollections.observableArrayList(
+                       new PieChart.Data("Rozrywka",20),
+                       new PieChart.Data("Żywność",30),
+                       new PieChart.Data("Inne",10),
+                       new PieChart.Data("Chemia",25),
+                       new PieChart.Data("Higiena i Leki",15)
+               );
+
+       pieChart.setData(pieChartData);
+
 
         }
 
