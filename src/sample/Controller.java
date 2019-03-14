@@ -130,7 +130,11 @@ public class Controller {
         WczytajZPliku.wczytaj(tablicaOkno);
         /*tablicaOkno.setItems(getZakupy());*/
 
-       ObservableList<PieChart.Data> pieChartData =
+       //Updating the pir chart
+
+
+
+/*       ObservableList<PieChart.Data> pieChartData =
                FXCollections.observableArrayList(
                        new PieChart.Data("Rozrywka",20),
                        new PieChart.Data("Żywność",30),
@@ -139,7 +143,12 @@ public class Controller {
                        new PieChart.Data("Higiena i Leki",15)
                );
 
-       pieChart.setData(pieChartData);
+         pieChart.setData(pieChartData);*/
+
+
+
+
+        pieChart.setData(UpdatePieChard.update(tablicaOkno));
 
 
         }

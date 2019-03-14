@@ -25,13 +25,7 @@ public class ZapiszDoPlikuClass {
 
     public void pokazTablice() {
 
-        List<Zakup> tempTable = new ArrayList<>();
-     /*   Zakup za = new Zakup();*/
-        for(int i =0; i < tablicaOknoClass.getItems().size();i++) {
-           /* za = tablicaOknoClass.getItems().get(i);*/
-            tempTable.add(tablicaOknoClass.getItems().get(i));
-        }
-
+        List<Zakup> tempTable = MyHelper.tableViewToList(tablicaOknoClass);
 
         //Tworzy obiekny json z uwzględnieniem wartości pustych w obiektach
         Gson gson = new GsonBuilder().serializeNulls().create();
