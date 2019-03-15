@@ -29,7 +29,7 @@ public class UpdatePieChard {
 
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                        new PieChart.Data("Rozrywka",20)
+                        new PieChart.Data("initialize",0)
                 );
 
 
@@ -39,6 +39,8 @@ public class UpdatePieChard {
             pieChartData.add(new PieChart.Data(name,TotalForEachCategoryMap.get(name)));
 
         }
+
+        pieChartData.remove(0);
 
         return pieChartData;
 
@@ -58,12 +60,13 @@ public class UpdatePieChard {
 
             tempZakupyName = za.getKategoria();
 
+
             if(TotalForEachCategoryMap.containsKey(tempZakupyName))
             {
                 TotalForEachCategoryMap.computeIfPresent(tempZakupyName, (k,v) -> v + za.getCena());
 
             }else{
-                TotalForEachCategoryMap.put(za.getNazwa(),za.getCena());
+                TotalForEachCategoryMap.put(tempZakupyName,za.getCena());
             }
 
         }

@@ -12,10 +12,7 @@ import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class Controller {
@@ -50,6 +47,7 @@ public class Controller {
         @FXML
         public void dodajzakup(ActionEvent e) {
 
+
 /*           Lista pól w tabeli:
             1.)Nazwa
             2.)Kategoria
@@ -68,6 +66,8 @@ public class Controller {
             System.out.format(nowyZakup.getKategoria() + " " + nowyZakup.getNazwa()+ " " + nowyZakup.getCena() + " " + nowyZakup.getData());
 
             tablicaOkno.getItems().add(nowyZakup);
+
+            pieChart.setData(UpdatePieChard.update(tablicaOkno));
 
         }
 
@@ -131,21 +131,6 @@ public class Controller {
         /*tablicaOkno.setItems(getZakupy());*/
 
        //Updating the pir chart
-
-
-
-/*       ObservableList<PieChart.Data> pieChartData =
-               FXCollections.observableArrayList(
-                       new PieChart.Data("Rozrywka",20),
-                       new PieChart.Data("Żywność",30),
-                       new PieChart.Data("Inne",10),
-                       new PieChart.Data("Chemia",25),
-                       new PieChart.Data("Higiena i Leki",15)
-               );
-
-         pieChart.setData(pieChartData);*/
-
-
 
 
         pieChart.setData(UpdatePieChard.update(tablicaOkno));
